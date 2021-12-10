@@ -17,7 +17,7 @@ public class QueueTest extends TestCase {
 
 
     @Test
-    public void peek() {
+    public void dequeue() {
         Queue queue = new Queue();
         queue.enqueue(1);
         queue.enqueue(2);
@@ -35,7 +35,7 @@ public class QueueTest extends TestCase {
         });
     }
     @Test
-    public void dequeue() {
+    public void peek() {
         Queue queue = new Queue();
         queue.enqueue(1);
         assertEquals(1, queue.peek());
