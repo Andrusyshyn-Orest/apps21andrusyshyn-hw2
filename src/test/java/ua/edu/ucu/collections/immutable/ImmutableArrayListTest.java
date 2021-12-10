@@ -50,6 +50,14 @@ public class ImmutableArrayListTest extends TestCase {
         });
     }
 
+    @org.junit.jupiter.api.Test
+    public void testAddIndexException2(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.add(-1, 5);;
+        });
+    }
+
     @Test
     public void testAddIndexToEmpty() {
         ImmutableArrayList arr = new ImmutableArrayList();
