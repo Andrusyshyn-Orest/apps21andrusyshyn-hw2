@@ -417,7 +417,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         return new ImmutableLinkedList(newHead);
     }
 
-    private class StartFinish {
+    private static class StartFinish {
         private Node start;
         private Node finish;
         private int length;

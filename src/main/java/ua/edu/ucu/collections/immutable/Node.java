@@ -6,6 +6,9 @@ public class Node {
     private Object value;
 
     public Node() {
+        previous = null;
+        next = null;
+        value = null;
     }
 
     @Override
