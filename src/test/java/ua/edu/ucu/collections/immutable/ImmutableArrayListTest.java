@@ -3,9 +3,8 @@ package ua.edu.ucu.collections.immutable;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ImmutableArrayListTest extends TestCase {
 
@@ -43,6 +42,14 @@ public class ImmutableArrayListTest extends TestCase {
         assertArrayEquals(arr.toArray(), inputArr);
     }
 
+    @org.junit.jupiter.api.Test
+    public void testAddIndexException(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.add(4, 5);;
+        });
+    }
+
     @Test
     public void testAddIndexToEmpty() {
         ImmutableArrayList arr = new ImmutableArrayList();
@@ -68,6 +75,15 @@ public class ImmutableArrayListTest extends TestCase {
         Object []expected = {"d", "a", "b", "c", "a", "b", "c"};
         assertArrayEquals(expected, newArr.toArray());
         assertArrayEquals(arr.toArray(), inputArr);
+    }
+
+
+    @org.junit.jupiter.api.Test
+    public void testAddAllIndexException(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.add(4, new Object[] {1, 2});;
+        });
     }
 
     @Test
@@ -142,16 +158,33 @@ public class ImmutableArrayListTest extends TestCase {
         assertArrayEquals(arr.toArray(), inputArr);
     }
 
+
+    @org.junit.jupiter.api.Test
+    public void testGetException(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.get(3);;
+        });
+    }
+
     @Test
     public void testGet(){
-        Object[][] inputArr = {{"a"}, {"b"}, {"c"}};
+        Object[] inputArr = {"a", "b", "c"};
         ImmutableArrayList arr = new ImmutableArrayList(inputArr);
         assertArrayEquals(arr.toArray(), inputArr);
         assertEquals(inputArr[1], arr.get(1));
-        Object []el = (Object[]) arr.get(1);
-        el[0] = "c";
-        inputArr = new Object[][]{{"a"}, {"b"}, {"c"}};
+        Object el = arr.get(1);
+        inputArr[1] = "z";
+        inputArr = new Object[]{"a", "b", "c"};
         assertArrayEquals(arr.toArray(), inputArr);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRemoveException(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.remove(3);;
+        });
     }
 
     @Test
@@ -174,6 +207,14 @@ public class ImmutableArrayListTest extends TestCase {
 
         assertArrayEquals(arr.toArray(), inputArr);
 
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testSetException(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.set(3, 5);;
+        });
     }
 
     @Test
@@ -244,6 +285,4 @@ public class ImmutableArrayListTest extends TestCase {
         assertArrayEquals(arr.toArray(), inputArr);
 
     }
-
-
 }
