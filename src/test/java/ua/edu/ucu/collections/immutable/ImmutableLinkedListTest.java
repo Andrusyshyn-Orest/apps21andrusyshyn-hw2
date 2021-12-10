@@ -106,6 +106,15 @@ public class ImmutableLinkedListTest extends TestCase {
 
     }
 
+    @org.junit.jupiter.api.Test
+    public void testAddIndexException2(){
+        ImmutableLinkedList arr = new ImmutableLinkedList();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.add(-1, 5);;
+        });
+
+    }
+
     @Test
     public void testAddIndex() {
         ImmutableLinkedList arr = new ImmutableLinkedList();
@@ -166,6 +175,14 @@ public class ImmutableLinkedListTest extends TestCase {
         });
     }
 
+    @org.junit.jupiter.api.Test
+    public void testAddAllIndexException2(){
+        ImmutableLinkedList arr = new ImmutableLinkedList();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.addAll(-1, new Object[] {1, 2});;
+        });
+    }
+
     @Test
     public void testAddAllIndex(){
         ImmutableLinkedList arr = new ImmutableLinkedList();
@@ -208,6 +225,14 @@ public class ImmutableLinkedListTest extends TestCase {
         ImmutableLinkedList arr = new ImmutableLinkedList(new Object[] {1, 2, 3});
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             arr.get(3);;
+        });
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testGetException2(){
+        ImmutableLinkedList arr = new ImmutableLinkedList(new Object[] {1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.get(-1);;
         });
     }
 
@@ -264,6 +289,14 @@ public class ImmutableLinkedListTest extends TestCase {
         });
     }
 
+    @org.junit.jupiter.api.Test
+    public void testRemoveException2(){
+        ImmutableLinkedList arr = new ImmutableLinkedList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.remove(-1);;
+        });
+    }
+
     @Test
     public void testRemove(){
         ImmutableLinkedList arr = new ImmutableLinkedList(new Object[]{1, 2, 3, 4, 5});
@@ -287,6 +320,14 @@ public class ImmutableLinkedListTest extends TestCase {
         ImmutableLinkedList arr = new ImmutableLinkedList(new Object[]{1, 2, 3});
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             arr.set(3, 5);;
+        });
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testSetException2(){
+        ImmutableLinkedList arr = new ImmutableLinkedList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.set(-1, 5);;
         });
     }
 

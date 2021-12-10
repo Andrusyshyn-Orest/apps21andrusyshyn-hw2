@@ -94,6 +94,14 @@ public class ImmutableArrayListTest extends TestCase {
         });
     }
 
+    @org.junit.jupiter.api.Test
+    public void testAddAllIndexException2(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.add(-1, new Object[] {1, 2});;
+        });
+    }
+
     @Test
     public void testAddAllToEmpty() {
         ImmutableArrayList arr = new ImmutableArrayList();
@@ -175,6 +183,14 @@ public class ImmutableArrayListTest extends TestCase {
         });
     }
 
+    @org.junit.jupiter.api.Test
+    public void testGetException2(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.get(-1);;
+        });
+    }
+
     @Test
     public void testGet(){
         Object[] inputArr = {"a", "b", "c"};
@@ -192,6 +208,14 @@ public class ImmutableArrayListTest extends TestCase {
         ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             arr.remove(3);;
+        });
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRemoveException2(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.remove(-1);;
         });
     }
 
@@ -222,6 +246,14 @@ public class ImmutableArrayListTest extends TestCase {
         ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             arr.set(3, 5);;
+        });
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testSetException2(){
+        ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            arr.set(-1, 5);;
         });
     }
 
