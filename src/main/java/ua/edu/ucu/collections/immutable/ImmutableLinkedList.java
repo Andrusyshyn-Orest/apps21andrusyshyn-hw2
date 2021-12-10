@@ -7,7 +7,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableLinkedList(Object[] elements) {
         this.length = elements.length;
-        if (elements.length == 0){
+        if (elements.length == 0) {
             this.head = null;
             this.tail = null;
             return;
@@ -15,12 +15,12 @@ public final class ImmutableLinkedList implements ImmutableList {
 
         Node myHead;
         Node myTail;
-        if (elements.length == 1){
+        if (elements.length == 1) {
             myHead = new Node();
             myHead.setValue(elements[0]);
             myTail = myHead;
         }
-        else{
+        else {
             myHead = new Node();
             myHead.setValue(elements[0]);
             myHead.setNext(new Node());
@@ -42,7 +42,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         this.tail = myTail;
     }
 
-    public ImmutableLinkedList(Node node){
+    public ImmutableLinkedList(Node node) {
         StartFinish startFinish = this.copyChain(node);
         this.head = startFinish.getStart();
         this.tail = startFinish.getFinish();
@@ -86,20 +86,20 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     private StartFinish copyChain(Node node) {
         Node currNode = node;
-        Node ChainHead = new Node();
-        Node ChainTail;                               // new Node();
-        int ChainLength = 0;
+        Node chainHead = new Node();
+        Node chainTail;                               // new Node();
+        int chainLength = 0;
         if (node.getNext() == null) {
-            ChainHead.setValue(currNode.getValue());
-            ChainTail = ChainHead;
-            ChainLength = 1;
-            return new StartFinish(ChainHead, ChainTail, ChainLength);
+            chainHead.setValue(currNode.getValue());
+            chainTail = chainHead;
+            chainLength = 1;
+            return new StartFinish(chainHead, chainTail, chainLength);
 
         } else {
-            Node actualNode = ChainHead;
-            Node tempNode = ChainHead;
+            Node actualNode = chainHead;
+            Node tempNode = chainHead;
             while (currNode.getNext() != null) {
-                ChainLength++;
+                chainLength++;
                 actualNode.setValue(currNode.getValue());
                 actualNode.setNext(new Node());
 
@@ -113,9 +113,9 @@ public final class ImmutableLinkedList implements ImmutableList {
             }
             actualNode.setPrevious(tempNode);
             actualNode.setValue(currNode.getValue());
-            ChainTail = actualNode;
-            ChainLength++;
-            return new StartFinish(ChainHead, ChainTail, ChainLength);
+            chainTail = actualNode;
+            chainLength++;
+            return new StartFinish(chainHead, chainTail, chainLength);
         }
     }
 
@@ -123,7 +123,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList add(Object e) {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             Node newHead = new Node();
             newHead.setValue(e);
             return new ImmutableLinkedList(newHead);
@@ -141,14 +141,14 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList add(int index, Object e) {
-        if (!((0 <= index) && (index <= this.length))){
+        if (!((0 <= index) && (index <= this.length))) {
             throw new IllegalArgumentException();
         }
 
-        if (index == 0){
+        if (index == 0) {
             return this.addFirst(e);
         }
-        if (index == length){
+        if (index == length) {
             return this.addLast(e);
         }
         StartFinish startFinish = copyChain(this.head);
@@ -166,7 +166,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList addAll(Object[] c) {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             return new ImmutableLinkedList(c);
         }
 
@@ -192,16 +192,16 @@ public final class ImmutableLinkedList implements ImmutableList {
             throw new IllegalArgumentException();
         }
 
-        if (c.length == 0){
-            if (this.isEmpty()){
+        if (c.length == 0) {
+            if (this.isEmpty()) {
                 return new ImmutableLinkedList();
             }
-            else{
+            else {
                 return new ImmutableLinkedList(this.head);
             }
         }
 
-        if (index == length){
+        if (index == length) {
             return this.addAll(c);
         }
 
@@ -214,7 +214,7 @@ public final class ImmutableLinkedList implements ImmutableList {
             zeroIndexFlag = true;
             previousNode = new Node();
         }
-        else{
+        else {
             previousNode = currNode.getPrevious();
         }
         ImmutableLinkedList insertChain = new ImmutableLinkedList(c);
@@ -226,7 +226,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         currNode.setPrevious(insertTail);
         insertTail.setNext(currNode);
 
-        if (zeroIndexFlag){
+        if (zeroIndexFlag) {
             newHead = insertHead;
             previousNode.setNext(null);
             insertHead.setPrevious(null);
@@ -234,15 +234,15 @@ public final class ImmutableLinkedList implements ImmutableList {
         return new ImmutableLinkedList(newHead);
     }
 
-    private Node findTail(Node head){
-        Node curr = head;
-        while (curr.getNext() != null){
+    private Node findTail(Node chainHead) {
+        Node curr = chainHead;
+        while (curr.getNext() != null) {
             curr = curr.getNext();
         }
         return curr;
     }
 
-    private Node findByIndex(int index, Node startNode){
+    private Node findByIndex(int index, Node startNode) {
         Node currNode = startNode;
         for (int i = 0; i < index; i++) {
             currNode = currNode.getNext();
@@ -265,11 +265,11 @@ public final class ImmutableLinkedList implements ImmutableList {
             throw new IllegalArgumentException();
         }
 
-        if (index == 0){
+        if (index == 0) {
             return this.removeFirst();
         }
 
-        if (index == this.length-1){
+        if (index == this.length-1) {
             return this.removeLast();
         }
 
@@ -301,7 +301,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     public int indexOf(Object e) {
         Node currNode = this.head;
         for (int i = 0; i < this.length; i++) {
-            if (currNode.getValue().equals(e)){
+            if (currNode.getValue().equals(e)) {
                 return i;
             }
             currNode = currNode.getNext();
@@ -329,7 +329,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         Node currNode = this.head;
         int ind = 0;
         Object [] array = new Object[this.length];
-        while (currNode != null){
+        while (currNode != null) {
             array[ind] = currNode.getValue();
             ind++;
             currNode = currNode.getNext();
@@ -338,7 +338,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList addFirst(Object e) {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             Node newHead = new Node();
             newHead.setValue(e);
             return new ImmutableLinkedList(newHead);
@@ -357,7 +357,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public Node getHead() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         StartFinish startFinish = copyChain(this.head);
@@ -365,7 +365,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public Node getTail() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         StartFinish startFinish = copyChain(this.head);
@@ -373,24 +373,24 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public Object getFirst() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         return this.head.getValue();
     }
 
     public Object getLast() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         return this.tail.getValue();
     }
 
     public ImmutableLinkedList removeFirst() {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        if (length == 1){
+        if (length == 1) {
             return new ImmutableLinkedList();
         }
         StartFinish startFinish = copyChain(this.head);
@@ -402,10 +402,10 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList removeLast() {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        if (length == 1){
+        if (length == 1) {
             return new ImmutableLinkedList();
         }
         StartFinish startFinish = copyChain(this.head);
@@ -413,15 +413,15 @@ public final class ImmutableLinkedList implements ImmutableList {
         Node newTail = oldTail.getPrevious();
         newTail.setNext(null);
         oldTail.setPrevious(null);
-        Node head = startFinish.getStart();
-        return new ImmutableLinkedList(head);
+        Node newHead = startFinish.getStart();
+        return new ImmutableLinkedList(newHead);
     }
 
-    private class StartFinish{
-        Node start;
-        Node finish;
-        int length;
-        StartFinish(Node start, Node finish, int length){
+    private class StartFinish {
+        private Node start;
+        private Node finish;
+        private int length;
+        StartFinish(Node start, Node finish, int length) {
             this.start = start;
             this.finish = finish;
             this.length = length;

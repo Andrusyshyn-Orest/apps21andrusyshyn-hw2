@@ -22,7 +22,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList add(int index, Object e) {
-        if (!( (0 <= index) && (index <= this.length) )){
+        if (!((0 <= index) && (index <= this.length))) {
             throw new IllegalArgumentException();
         }
         Object [] newArr = Arrays.copyOf(this.elements, this.length+1);
@@ -40,7 +40,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList addAll(int index, Object[] c) {
-        if (!( (0 <= index) && (index <= this.length) )){
+        if (!((0 <= index) && (index <= this.length))) {
             throw new IllegalArgumentException();
         }
         Object [] newArr = Arrays.copyOf(this.elements, this.length+c.length);
@@ -56,7 +56,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public Object get(int index) {
-        if (!( (0 <= index) && (index < this.length) )){
+        if (!((0 <= index) && (index < this.length))) {
             throw new IllegalArgumentException();
         }
         return this.toArray()[index];
@@ -64,7 +64,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList remove(int index) {
-        if (!( (0 <= index) && (index < this.length) )){
+        if (!((0 <= index) && (index < this.length))) {
             throw new IllegalArgumentException();
         }
         Object [] newArr = Arrays.copyOf(this.elements, this.length-1);
@@ -76,7 +76,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList set(int index, Object e) {
-        if (!( (0 <= index) && (index < this.length) )){
+        if (!((0 <= index) && (index < this.length))) {
             throw new IllegalArgumentException();
         }
         Object[] newArr = this.toArray();
@@ -87,7 +87,7 @@ public final class ImmutableArrayList implements ImmutableList {
     @Override
     public int indexOf(Object e) {
         for (int i = 0; i < this.length; i++) {
-            if (this.elements[i].equals(e)){
+            if (this.elements[i].equals(e)) {
                 return i;
             }
         }

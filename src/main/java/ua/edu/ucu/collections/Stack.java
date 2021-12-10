@@ -5,7 +5,7 @@ import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 public class Stack {
     private ImmutableLinkedList stack;
 
-    public Stack(){
+    public Stack() {
         this.stack = new ImmutableLinkedList();
     }
 
@@ -14,7 +14,7 @@ public class Stack {
     }
 
     public Object pop() {
-        if (stack.isEmpty()){
+        if (stack.isEmpty()) {
             throw new IndexOutOfBoundsException();
         }
         Object last = stack.getLast();
@@ -23,7 +23,7 @@ public class Stack {
     }
 
     public Object peek() {
-        if (stack.isEmpty()){
+        if (stack.isEmpty()) {
             throw new IndexOutOfBoundsException();
         }
         return stack.getLast();
