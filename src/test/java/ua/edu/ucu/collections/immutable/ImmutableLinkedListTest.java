@@ -81,9 +81,9 @@ public class ImmutableLinkedListTest extends TestCase {
         Object[] expArr4 = {0, 1, 2, 3, 4};
         assertArrayEquals(newArr.toArray(), expArr4);
 
-        assertEquals(newArr.getHead().getValue(), 0);
+        assertEquals(newArr.getHead().toString(), "0");
         assertEquals(newArr.getTail().getValue(), 4);
-        assertEquals(newArr.getFirst().toString(), "0");
+        assertEquals(newArr.getFirst(), 0);
         assertEquals(newArr.getLast(), 4);
         assertEquals(newArr.size(), 5);
 

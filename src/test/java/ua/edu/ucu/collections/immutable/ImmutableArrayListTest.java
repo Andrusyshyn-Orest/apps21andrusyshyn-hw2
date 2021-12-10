@@ -90,7 +90,7 @@ public class ImmutableArrayListTest extends TestCase {
     public void testAddAllIndexException(){
         ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            arr.add(4, new Object[] {1, 2});;
+            arr.addAll(4, new Object[] {1, 2});;
         });
     }
 
@@ -98,7 +98,7 @@ public class ImmutableArrayListTest extends TestCase {
     public void testAddAllIndexException2(){
         ImmutableArrayList arr = new ImmutableArrayList(new Object[]{1, 2, 3});
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            arr.add(-1, new Object[] {1, 2});;
+            arr.addAll(-1, new Object[] {1, 2});;
         });
     }
 
