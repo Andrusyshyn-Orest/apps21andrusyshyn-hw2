@@ -3,8 +3,6 @@ package ua.edu.ucu.collections.immutable;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.function.ObjLongConsumer;
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
